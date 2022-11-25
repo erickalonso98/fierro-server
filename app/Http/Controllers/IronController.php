@@ -24,7 +24,7 @@ class IronController extends Controller
     }
 
     public function show($id){
-        $iron = Iron::find($id)->load('type');
+        $iron = Iron::find($id);
 
         if(is_object($iron)){
             $data = [
@@ -140,6 +140,7 @@ class IronController extends Controller
                 unset($params_array['person_id']);
                 unset($params_array['high_iron_id']);
                 unset($params_array['created_at']);
+                unset($params_array['updated_at']);
 
                 $iron = Iron::where('id',$id)->update($params_array);
 
