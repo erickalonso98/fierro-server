@@ -27,7 +27,8 @@ class PropertyController extends Controller
     
     public function show($id){
 
-        $property = Property::find($id)->load('exploitation')->load('tenencia');
+        $property = Property::find($id);
+        //->load('exploitation')->load('tenencia');
 
         if(is_object($property)){
             $data = [
@@ -133,6 +134,7 @@ class PropertyController extends Controller
                 unset($params_array['id']);
                 unset($params_array['person_id']);
                 unset($params_array['created_at']);
+                unset($params_array['updated_at']);
 
                 //actualizar el predial
                 $property = Property::where('id',$id)->update($params_array);
